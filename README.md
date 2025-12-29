@@ -44,13 +44,32 @@ git push -u origin main
 This does two things:
 
 * pushes local branch to remote
-* links `main` $\Leftrightarrow$ `origin/main`  
+* links `main` $\Leftrightarrow$ `origin/main`
 
 #### 3. If remote already has commits
 
 ```bash
 git pull origin main --allow-unrelated-histories
 git push -u origin main
+```
+
+### Add multi-lines in commit messages
+
+#### 1. `-m` multiple times
+
+Each `-m` becomes a new paragraph separated by a new line.
+
+```bash
+git commit -m "feat: add new parser" \
+           -m "This improves performance and memory usage"
+```
+
+#### 2. Use `\n` literal newlines inside quotes
+
+It works in Bash, Zsh, Fish, etc...
+
+```bash
+git commit -m $'feat: add parser \n\nImproves performance and memory usage"
 ```
 
 ## Tips
@@ -64,4 +83,4 @@ My local repo also had a commit.
 Therefore, the repos had different histories.
 
 To avoid the issue just create a new repo on git hub and clone it locally.
-Or create an empty remote repo. 
+Or create an empty remote repo.
