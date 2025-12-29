@@ -27,46 +27,41 @@ You need to push the new `main` branch to the remote repo.
 git push -u origin main
 ```
 
-#### Deeper Sub-section (H4 Header)
+### Connect remote to local repo
 
-## Section 2: Text Formatting
+#### 1. Add the remote
 
-*   **Bold text** with `**asterisks**` or `__underscores__`.
-*   *Italic text* with `*single asterisks*` or `_single underscores_`.
-*   ***Bold and Italic text*** can be combined.
-*   ~Strikethrough text~ with `~~tilde symbols~~` (GFM extension).
+```bash
+git remote add origin git remote add origin git@github.com:USER/REPO.git
+```
 
-## Section 3: Lists
+#### 2. Push the branch and set upstream
 
-### Unordered List
+```bash
+git push -u origin main
+```
 
-*   Item 1
-*   Item 2
-    *   Nested item 2a (indent with spaces or tabs).
-    *   Nested item 2b
+This does two things:
 
-### Ordered List
+* pushes local branch to remote
+* links `main` $\Leftrightarrow$ `origin/main`  
 
-1.  First item
-2.  Second item
-3.  Third item
-    *   You can nest bullet points within ordered lists.
+#### 3. If remote already has commits
 
-## Section 4: Links and Images
+```bash
+git pull origin main --allow-unrelated-histories
+git push -u origin main
+```
 
-You can create [inline links](www.markdownguide.org).
+## Tips
 
-Images use a similar syntax, preceded by an exclamation mark:
-![Alt text describing the image](https://octodex.github.com/images/minion.png "Optional title text")
+### Conflicts between remote and local repo
 
-## Section 5: Code Blocks
+#### Clone remote first
 
-Inline code snippets are wrapped in backticks: `const example = "hello";`.
+The problem I faced was my remote repo had a commit already.
+My local repo also had a commit.
+Therefore, the repos had different histories.
 
-Fenced code blocks use three backticks and can specify the language for syntax highlighting:
-
-```python
-def greet(name):
-    print(f"Hello, {name}!")
-
-greet("World")
+To avoid the issue just create a new repo on git hub and clone it locally.
+Or create an empty remote repo. 
